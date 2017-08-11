@@ -54,11 +54,8 @@ forward SetStoneName(class, name[]);
 forward GetStoneDefaultName(class, out[], length = sizeof(out));
 forward GetStoneName(class, out[], length = sizeof(out));
 forward CreateStone(class, Float:x, Float:y, Float:z);
-<<<<<<< HEAD
 forward DestroyStone(stoneid);
 forward IsValidStoneID(stoneid);
-=======
->>>>>>> e11721a9ec45968630a2339b0ce1fd80625d1314
 /* END OF FORWARDS */
 
 /* USED TOOLS */
@@ -115,7 +112,6 @@ stock CreateGoldStone(Float:x, Float:y, Float:z, name = 2)
 }
 
 
-<<<<<<< HEAD
 stock DestroyStone(stoneid)
 {
 
@@ -147,8 +143,7 @@ stock IsValidStoneID(stoneid)
 }
 
 
-=======
->>>>>>> e11721a9ec45968630a2339b0ce1fd80625d1314
+
 stock CreateNormalStone(Float:x, Float:y, Float:z, name = 1)
 {
 	new stonename[36];
@@ -196,20 +191,23 @@ stock GetStoneName(class, out[], length = sizeof(out))
 
 stock GetStoneDefaultName(class, out[], length = sizeof(out))
 {
-	if(class > 4) return printf("[MINEING ERROR] Theres Class With ID %d",class);
-	
-	switch(class)
+	if(class > 4) 
 	{
-		case 1:
-		{
-			strcat(out, "Normal Rock",length);
-		}
-
-		case 2:
-		{
-			strcat(out, "Gold Ore", length);
-		} 
+		printf("[MINEING ERROR] Theres Class With ID %d",class);
 	}
-	
-	return 1;
+	else
+	{
+		switch(class)
+		{
+			case 1:
+			{
+				strcat(out, "Normal Rock",length);
+			}
+
+			case 2:
+			{
+				strcat(out, "Gold Ore", length);
+			} 
+		}
+	}
 }
