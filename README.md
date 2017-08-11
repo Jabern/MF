@@ -1,2 +1,2 @@
 # MF
-SA-MP Mineing Framework
+SA-MP Mining Framework
