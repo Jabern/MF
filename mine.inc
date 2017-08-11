@@ -12,7 +12,6 @@
 
 #include "MINE\mineingutils.pwn"
 
-<<<<<<< HEAD
 /*
 native CreateGoldStone(Float:x, Float:y, Float:z, name = 2);
 native CreateNormalStone(Float:x, Float:y, Float:z, name = 1);
@@ -24,5 +23,3 @@ native DestroyStone(stoneid);
 native IsValidStoneID(stoneid);
 */
 =======
-
->>>>>>> e11721a9ec45968630a2339b0ce1fd80625d1314
