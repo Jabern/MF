@@ -56,10 +56,6 @@ forward GetStoneName(class, out[], length = sizeof(out));
 forward CreateStone(class, Float:x, Float:y, Float:z);
 forward DestroyStone(stoneid);
 forward IsValidStoneID(stoneid);
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 121b88868e048d562b8105d966f50cb3c951ed47
 /* END OF FORWARDS */
 
 /* USED TOOLS */
