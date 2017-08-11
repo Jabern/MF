@@ -22,4 +22,3 @@ native CreateStone(class, Float:x, Float:y, Float:z);
 native DestroyStone(stoneid);
 native IsValidStoneID(stoneid);
 */
-=======
