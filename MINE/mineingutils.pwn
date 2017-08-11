@@ -142,7 +142,7 @@ stock DestroyStone(stoneid)
 stock IsValidStoneID(stoneid)
 {
 
-	if(stoneid > CreatedStones && !> 1) return true;
+	if(stoneid > CreatedStones && stoneid !> 1) return true;
 	else false;
 
 }
