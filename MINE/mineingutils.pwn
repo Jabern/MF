@@ -49,9 +49,13 @@ new CreatedStones = 0;
 
 /* FORWARDS */
 forward CreateGoldStone(Float:x, Float:y, Float:z, name = 2);
+forward CreateNormalStone(Float:x, Float:y, Float:z, name = 1);
 forward SetStoneName(class, name[]);
 forward GetStoneDefaultName(class, out[], length = sizeof(out));
 forward GetStoneName(class, out[], length = sizeof(out));
+forward CreateStone(class, Float:x, Float:y, Float:z);
+forward DestroyStone(stoneid);
+forward IsValidStoneID(stoneid);
 /* END OF FORWARDS */
 
 /* USED TOOLS */
@@ -65,8 +69,24 @@ stock Float:frandom(Float:max, Float:min = 0.0, dp = 4)
 }
 /* END OF USED TOOLS */
 
+
+stock CreateStone(class,Float:x, Float:y, Float:z)
+{
+	if(class < 1) return printf("Class Can't Be Less Then 1!");
+	CreatedStones++;
+	switch(class)
+	{
+		case 1: CreateNormalStone(x,y,z);
+		case 2: CreateGoldStone(x,y,z);
+	}
+
+	return 1;
+} 
+
+
 stock CreateGoldStone(Float:x, Float:y, Float:z, name = 2)
 {
+	
 	new stonename[36];
 
 	Stones[CreatedStones][sX] = x;
@@ -89,6 +109,61 @@ stock CreateGoldStone(Float:x, Float:y, Float:z, name = 2)
 
 	Stones[CreatedStones][sLabel] = CreateDynamic3DTextLabel(stonename, 0xFFFF00FF, x, y, z, 15.0);
 
+}
+
+
+stock DestroyStone(stoneid)
+{
+
+	if(!IsValidStoneID(stoneid)) return printf("[MINING ERROR] Stone ID Is Not Correct");
+
+	Stones[CreatedStones][sX] = 0.0;
+	
+	Stones[CreatedStones][sY] = 0.0;
+	
+	Stones[CreatedStones][sZ] = 0.0;
+
+	Stones[CreatedStones][sHP] = 0.0;
+
+	DestroyDynamicObject(Stones[CreatedStones][sObject]);
+
+	DestroyDynamic3DTextLabel(Stones[CreatedStones][sLabel]);
+
+	CreatedStones--;
+
+}
+
+
+stock IsValidStoneID(stoneid)
+{
+
+	if(stoneid > CreatedStones && !> 1) return true;
+	else false;
+
+}
+
+
+stock CreateNormalStone(Float:x, Float:y, Float:z, name = 1)
+{
+	new stonename[36];
+
+	Stones[CreatedStones][sX] = x;
+
+	Stones[CreatedStones][sY] = y;
+
+	Stones[CreatedStones][sZ] = z;
+
+	Stones[CreatedStones][sClass] = 1;
+
+	Stones[CreatedStones][sHP] = frandom(100.0, 10.0);
+
+	Stones[CreatedStones][sObject] = CreateDynamicObject(MAINSTONEOBJECT,x,y,z,0.000,5.000,0.000,-1,-1,-1,7777.777,7777.777);
+	
+	GetStoneName(name, stonename);	
+	
+	printf("STONE NAME %s", stonename);
+
+	Stones[CreatedStones][sLabel] = CreateDynamic3DTextLabel(stonename, 0xFFFF00FF, x, y, z, 15.0);
 }
 
 
