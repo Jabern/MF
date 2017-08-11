@@ -56,6 +56,10 @@ forward GetStoneName(class, out[], length = sizeof(out));
 forward CreateStone(class, Float:x, Float:y, Float:z);
 forward DestroyStone(stoneid);
 forward IsValidStoneID(stoneid);
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 121b88868e048d562b8105d966f50cb3c951ed47
 /* END OF FORWARDS */
 
 /* USED TOOLS */
@@ -110,7 +114,6 @@ stock CreateGoldStone(Float:x, Float:y, Float:z, name = 2)
 	Stones[CreatedStones][sLabel] = CreateDynamic3DTextLabel(stonename, 0xFFFF00FF, x, y, z, 15.0);
 
 }
-
 
 stock DestroyStone(stoneid)
 {
