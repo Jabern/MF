@@ -120,22 +120,22 @@ stock CreateGoldStone(Float:x, Float:y, Float:z, name = 2)
 stock DestroyStone(stoneid)
 {
 
-	if(!IsValidStoneID(stoneid)) return printf("[MINING ERROR] Stone ID Is Not Correct");
+	if(!IsValidStoneID(stoneid)) printf("[MINING ERROR] Stone ID Is Not Correct");
+	else{
+		Stones[CreatedStones][sX] = 0.0;
 
-	Stones[CreatedStones][sX] = 0.0;
-	
-	Stones[CreatedStones][sY] = 0.0;
-	
-	Stones[CreatedStones][sZ] = 0.0;
+		Stones[CreatedStones][sY] = 0.0;
 
-	Stones[CreatedStones][sHP] = 0.0;
+		Stones[CreatedStones][sZ] = 0.0;
 
-	DestroyDynamicObject(Stones[CreatedStones][sObject]);
+		Stones[CreatedStones][sHP] = 0.0;
 
-	DestroyDynamic3DTextLabel(Stones[CreatedStones][sLabel]);
+		DestroyDynamicObject(Stones[CreatedStones][sObject]);
 
-	CreatedStones--;
+		DestroyDynamic3DTextLabel(Stones[CreatedStones][sLabel]);
 
+		CreatedStones--;
+	}
 }
 
 
