@@ -89,6 +89,32 @@ stock CreateStone(class,Float:x, Float:y, Float:z)
 	return 1;
 } 
 
+stock CreateDiamondStone(Float:x, Float:y, Float:z, name = 3)
+{
+	new stonename[36];
+
+	Stones[CreatedStones][sX] = x;
+
+	Stones[CreatedStones][sY] = y;
+
+	Stones[CreatedStones][sZ] = z;
+
+	Stones[CreatedStones][sClass] = 2;
+
+	Stones[CreatedStones][sHP] = frandom(100.0, 10.0);
+
+	Stones[CreatedStones][sObject] = CreateDynamicObject(MAINSTONEOBJECT,x,y,z,0.000,5.000,0.000,-1,-1,-1,7777.777,7777.777);
+
+	SetDynamicObjectMaterial(Stones[CreatedStones][sObject], 0, 8839, "vgsecarshow", "lightblue2_32", 0xFFFFFFFF);
+
+	GetStoneName(name, stonename);
+
+	printf("STONE NAME %s", stonename);
+
+	Stones[CreatedStones][sLabel] = CreateDynamic3DTextLabel(stonename, 0xFFFF00FF, x, y, z, 15.0);
+
+	DebugStone(CreatedStones);
+}
 
 stock CreateGoldStone(Float:x, Float:y, Float:z, name = 2)
 {
@@ -147,6 +173,10 @@ stock IsValidStoneID(stoneid)
 
 }
 
+stock GetStoneID(stone)
+{
+	return Stones[stone][sID];
+}
 
 
 stock CreateNormalStone(Float:x, Float:y, Float:z, name = 1)
@@ -217,6 +247,22 @@ stock GetStoneDefaultName(class, out[], length = sizeof(out))
 	}
 }
 
+stock DebugStone(stone)
+{
+	static ID = GetStoneID(stone);
+	printf("DEBUG : Stone ID %d", ID);
+
+	static Float:x, Float:y, Float:z;
+
+	Stones[stone][sX] = x;
+
+	Stones[stone][sY] = y;
+
+	Stones[stone][sZ] = z;
+
+	printf("DEBUG : Position of Stone ID %d \n X : %f \n Y : %f \n Z : %f", ID, x, y, z)
+	
+}
 
 stock LoadStones(filename[])
 {
